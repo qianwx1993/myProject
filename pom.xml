@@ -22,7 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<cas-client2-core.version>3.2.4</cas-client2-core.version>
+		<!--<cas-client2-core.version>3.2.4</cas-client2-core.version>-->
 	</properties>
 
 	<dependencies>
@@ -70,7 +70,7 @@
 			<version>1.16.18</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.jasig.cas.client</groupId>
 			<artifactId>cas-client2-core</artifactId>
 			<version>${cas-client2-core.version}</version>
@@ -88,7 +88,7 @@
 					<artifactId>slf4j-impl</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 	<build>
