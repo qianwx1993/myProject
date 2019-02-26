@@ -1,6 +1,7 @@
 package com.qwx.myProject;
 
 import com.qwx.myProject.mapper.CityMapper;
+import com.qwx.myProject.pojo.People;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class MyProjectApplicationTests {
 	@Autowired
 	private CityMapper cityMapper;
 
+	@Autowired
+	private People people;
+
 	@Test
 	public void contextLoads() {
 		SqlRowSet sqlRowSet = jdbcTemplate1.queryForRowSet("select *from city");
@@ -34,5 +38,11 @@ public class MyProjectApplicationTests {
 	@Test
 	public void findCityByName(){
 
+	}
+
+	//测试@configurationProperties注解
+	@Test
+	public void testConfigurationProperties(){
+		System.out.println(people.toString());
 	}
 }
