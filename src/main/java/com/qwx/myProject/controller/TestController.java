@@ -20,6 +20,7 @@ public class TestController {
 	@Resource
 	TestService testService1;
 
+
 	@GetMapping("test1")
 	public String test1(){
 		testService1.save();

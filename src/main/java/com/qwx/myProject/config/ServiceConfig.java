@@ -1,9 +1,4 @@
-package com.qwx.myProject.config;/**
- * @Auther: qian
- * @Date: 2019/1/9 16:51
- * @Company Bangsun
- * @Description:
- */
+package com.qwx.myProject.config;
 
 import com.qwx.myProject.service.TestService;
 import com.qwx.myProject.service.impl.TestServiceImpl;
@@ -11,13 +6,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * 测试@Configuration的用法
  * @Version 1.0
  * @Since JDK1.7
  * @Author Qian
  * @Company Bangsun
  * @Date 2019/1/9 16:51
  */
-@Configuration
+//@Configuration
 public class ServiceConfig {
 	@Bean
 	public TestService testService1(){
