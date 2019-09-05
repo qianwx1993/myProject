@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
  * @Date 2019/3/8 15:42
  */
 @Configuration
-@PropertySource("classpath:/other/app.propertis")
+@PropertySource("classpath:/other/app.properties")
 public class ExpressiveConfig {
 
 }

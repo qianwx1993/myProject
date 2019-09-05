@@ -70,6 +70,14 @@
 			<version>1.16.18</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.baidu.aip</groupId>
+			<artifactId>java-sdk</artifactId>
+			<version>4.11.3</version>
+		</dependency>
+
+
 		<!--<dependency>
 			<groupId>org.jasig.cas.client</groupId>
 			<artifactId>cas-client2-core</artifactId>
