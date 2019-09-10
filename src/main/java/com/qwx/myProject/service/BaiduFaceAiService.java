@@ -1,6 +1,7 @@
 package com.qwx.myProject.service;
 
 import com.baidu.aip.face.AipFace;
+import com.baidu.aip.face.FaceConsts;
 import org.json.JSONObject;
 
 /**
@@ -17,5 +18,5 @@ public interface BaiduFaceAiService {
 	 * 人脸检测
 	 * @return
 	 */
-	JSONObject faceDetect();
+	JSONObject faceDetect(String image, String imageType, String faceField, String maxFaceNum,String faceType,String livenessControl);
 }
