@@ -2,6 +2,7 @@ package com.qwx.myProject.service;
 
 import com.baidu.aip.face.AipFace;
 import com.qwx.myProject.form.req.baidu.FaceAddForm;
+import com.qwx.myProject.form.res.BaseResForm;
 import org.json.JSONObject;
 
 /**
@@ -36,4 +37,18 @@ public interface BaiduFaceAiService {
 	 * @return
 	 */
 	com.alibaba.fastjson.JSONObject faceAdd(FaceAddForm faceAddForm);
+
+	/**
+	 * 添加分组
+	 * @param groupId
+	 * @return
+	 */
+	BaseResForm groupAdd(String groupId);
+
+	/**
+	 * 百度提供的添加分组
+	 * @param groupId
+	 * @return
+	 */
+	BaseResForm groupAdd2(String groupId);
 }

@@ -1,9 +1,15 @@
 package com.qwx.myProject.service.impl;
 
+import com.alibaba.fastjson.JSONArray;
 import com.baidu.aip.face.AipFace;
+import com.qwx.myProject.common.ErrorCode;
 import com.qwx.myProject.form.req.baidu.FaceAddForm;
+import com.qwx.myProject.form.res.BaseResForm;
 import com.qwx.myProject.http.baidu.FaceAddHttp;
+import com.qwx.myProject.http.baidu.GroupAddHttp;
 import com.qwx.myProject.service.BaiduFaceAiService;
+import com.qwx.myProject.util.GsonUtils;
+import com.qwx.myProject.util.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
@@ -46,6 +52,9 @@ public class BaiduFaceAiServiceImpl implements BaiduFaceAiService {
 
 	@Resource
 	private FaceAddHttp faceAddHttp;
+	@Resource
+	private GroupAddHttp groupAddHttp;
+
 	@Override
 	public AipFace getAipFace() {
 		AipFace client = new AipFace(appId, apiKey, secretKey);
@@ -112,7 +121,37 @@ public class BaiduFaceAiServiceImpl implements BaiduFaceAiService {
 
 	@Override
 	public com.alibaba.fastjson.JSONObject faceAdd(FaceAddForm faceAddForm) {
+		log.info("accessToken为:"+accessToken);
 		return faceAddHttp.doPost(accessToken,faceAddForm);
+	}
+
+	@Override
+	public BaseResForm groupAdd(String groupId) {
+		com.alibaba.fastjson.JSONObject retJson = groupAddHttp.doPost(groupId);
+
+		return BaseResForm.success(retJson);
+	}
+
+	@Override
+	public BaseResForm groupAdd2(String groupId) {
+
+		// 请求url
+		String url = "https://aip.baidubce.com/rest/2.0/face/v3/faceset/group/add";
+		try {
+			Map<String, Object> map = new HashMap<>();
+			map.put("group_id", groupId);
+
+			String param = com.alibaba.fastjson.JSONObject.toJSONString(map);
+
+			// 注意这里仅为了简化编码每一次请求都去获取access_token，线上环境access_token有过期时间， 客户端可自行缓存，过期后重新获取。
+
+			String result = HttpUtil.post(url, accessToken, "application/json", param);
+			System.err.println(result);
+		} catch (Exception e) {
+			log.error(e.getMessage(),e);
+			return BaseResForm.back(ErrorCode.FALSE);
+		}
+		return BaseResForm.success();
 	}
 
 

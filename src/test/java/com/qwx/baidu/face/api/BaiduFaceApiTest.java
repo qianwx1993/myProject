@@ -2,6 +2,7 @@ package com.qwx.baidu.face.api;
 
 import com.qwx.myProject.MyProjectApplication;
 import com.qwx.myProject.form.req.baidu.FaceAddForm;
+import com.qwx.myProject.form.res.BaseResForm;
 import com.qwx.myProject.service.BaiduFaceAiService;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
@@ -55,5 +56,19 @@ public class BaiduFaceApiTest {
 		com.alibaba.fastjson.JSONObject jsonObject = baiduFaceAiService.faceAdd(faceAddForm);
 
 		System.err.println("jsonObject返回："+jsonObject.toJSONString());
+	}
+
+	@Test
+	public void groupAddTest(){
+		BaseResForm baseResForm = baiduFaceAiService.groupAdd("10086");
+		System.err.println("baseResForm返回："+ com.alibaba.fastjson.JSONObject.toJSONString
+				(baseResForm));
+	}
+
+	@Test
+	public void groupAdd2Test(){
+		BaseResForm baseResForm = baiduFaceAiService.groupAdd2("10086");
+		System.err.println("baseResForm返回："+ com.alibaba.fastjson.JSONObject.toJSONString
+				(baseResForm));
 	}
 }
