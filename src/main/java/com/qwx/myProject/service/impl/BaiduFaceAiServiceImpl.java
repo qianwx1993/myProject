@@ -1,14 +1,13 @@
 package com.qwx.myProject.service.impl;
 
-import com.alibaba.fastjson.JSONArray;
 import com.baidu.aip.face.AipFace;
 import com.qwx.myProject.common.ErrorCode;
-import com.qwx.myProject.form.req.baidu.FaceAddForm;
+import com.qwx.myProject.exception.AppException;
+import com.qwx.myProject.form.req.baidu.FaceAddReqForm;
 import com.qwx.myProject.form.res.BaseResForm;
 import com.qwx.myProject.http.baidu.FaceAddHttp;
 import com.qwx.myProject.http.baidu.GroupAddHttp;
 import com.qwx.myProject.service.BaiduFaceAiService;
-import com.qwx.myProject.util.GsonUtils;
 import com.qwx.myProject.util.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
@@ -108,20 +107,19 @@ public class BaiduFaceAiServiceImpl implements BaiduFaceAiService {
 	}
 
 	@Override
-	public JSONObject faceDetect(String image, String imageType, String faceField, String maxFaceNum,String faceType,String livenessControl) {
+	public JSONObject faceDetect(String image, String imageType) {
 
 		// 传入可选参数调用接口
 		HashMap<String, String> options = new HashMap<String, String>();
-		//options.put("face_field", faceField);
-		//options.put("max_face_num", maxFaceNum);
-		//options.put("face_type", faceType);
-		//options.put("liveness_control", livenessControl);
+		JSONObject detect = getAipFace().detect(image, imageType, options);
+		log.info("人脸检测返回：{}",detect.toString());
 		return getAipFace().detect(image,imageType,options);
 	}
 
 	@Override
-	public com.alibaba.fastjson.JSONObject faceAdd(FaceAddForm faceAddForm) {
+	public com.alibaba.fastjson.JSONObject faceAdd(FaceAddReqForm faceAddForm) {
 		log.info("accessToken为:"+accessToken);
+
 		return faceAddHttp.doPost(accessToken,faceAddForm);
 	}
 

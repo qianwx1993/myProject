@@ -1,7 +1,7 @@
 package com.qwx.baidu.face.api;
 
 import com.qwx.myProject.MyProjectApplication;
-import com.qwx.myProject.form.req.baidu.FaceAddForm;
+import com.qwx.myProject.form.req.baidu.FaceAddReqForm;
 import com.qwx.myProject.form.res.BaseResForm;
 import com.qwx.myProject.service.BaiduFaceAiService;
 import lombok.extern.slf4j.Slf4j;
@@ -33,8 +33,7 @@ public class BaiduFaceApiTest {
 	public void detect(){
 		String imageType="BASE64";
 		log.debug("图片base64编码"+image);
-		JSONObject retJson = baiduFaceAiService.faceDetect(image,
-				imageType, "", "", "", "");
+		JSONObject retJson = baiduFaceAiService.faceDetect(image,imageType);
 
 		log.info("人脸检测结果"+retJson.toString());
 	}
@@ -47,7 +46,7 @@ public class BaiduFaceApiTest {
 
 	@Test
 	public void faceAddTest(){
-		FaceAddForm faceAddForm=new FaceAddForm();
+		FaceAddReqForm faceAddForm=new FaceAddReqForm();
 		faceAddForm.setImage(image);
 		faceAddForm.setImage_type("BASE64");
 		faceAddForm.setGroup_id("100");

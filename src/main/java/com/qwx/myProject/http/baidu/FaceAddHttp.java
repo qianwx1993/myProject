@@ -2,7 +2,7 @@ package com.qwx.myProject.http.baidu;
 
 import com.alibaba.fastjson.JSONObject;
 import com.qwx.myProject.form.req.baidu.BaseReqForm;
-import com.qwx.myProject.form.req.baidu.FaceAddForm;
+import com.qwx.myProject.form.req.baidu.FaceAddReqForm;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,7 +22,7 @@ public class FaceAddHttp extends BaiduBaseHttp {
 	 * @param faceAddForm
 	 * @return
 	 */
-	public JSONObject doPost(String accessToken, FaceAddForm faceAddForm) {
+	public JSONObject doPost(String accessToken, FaceAddReqForm faceAddForm) {
 		JSONObject faceAddFormJson = new JSONObject();
 		faceAddFormJson.put("image",faceAddForm.getImage());
 		faceAddFormJson.put("image_type",faceAddForm.getImage_type());

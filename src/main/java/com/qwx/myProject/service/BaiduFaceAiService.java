@@ -1,7 +1,7 @@
 package com.qwx.myProject.service;
 
 import com.baidu.aip.face.AipFace;
-import com.qwx.myProject.form.req.baidu.FaceAddForm;
+import com.qwx.myProject.form.req.baidu.FaceAddReqForm;
 import com.qwx.myProject.form.res.BaseResForm;
 import org.json.JSONObject;
 
@@ -30,13 +30,13 @@ public interface BaiduFaceAiService {
 	 * 人脸检测
 	 * @return
 	 */
-	JSONObject faceDetect(String image, String imageType, String faceField, String maxFaceNum,String faceType,String livenessControl);
+	JSONObject faceDetect(String image, String imageType);
 
 	/**
 	 * 人脸注册
 	 * @return
 	 */
-	com.alibaba.fastjson.JSONObject faceAdd(FaceAddForm faceAddForm);
+	com.alibaba.fastjson.JSONObject faceAdd(FaceAddReqForm faceAddForm);
 
 	/**
 	 * 添加分组
