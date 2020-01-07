@@ -1,4 +1,4 @@
-package com.qwx;
+package com.qwx.jvmtest;
 
 /**
  * @Version 1.0

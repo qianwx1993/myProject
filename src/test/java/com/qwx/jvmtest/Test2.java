@@ -1,4 +1,4 @@
-package com.qwx;
+package com.qwx.jvmtest;
 
 /**
  * 查看i++与++i的不同
