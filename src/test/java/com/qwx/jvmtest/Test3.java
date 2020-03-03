@@ -1,5 +1,9 @@
 package com.qwx.jvmtest;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @Version 1.0
  * @Since JDK1.8
@@ -9,9 +13,11 @@ package com.qwx.jvmtest;
  */
 public class Test3 {
 	public static void main(String[] args) {
-		new Test3().m1();
-		new Test3().m2();
+		//new Test3().m1();
+		//new Test3().m2();
+		//new Test3().m3();
 	}
+
 
 	public void m1(){
 		String s1 = "123";
@@ -28,4 +34,5 @@ public class Test3 {
 		String s3 = sb.toString();
 		System.out.println(s3);
 	}
+
 }
