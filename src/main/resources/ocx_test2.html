@@ -1,0 +1,14 @@
+<input type="button" value="read" onclick="readJcCard()" />
+
+<script type="text/javascript">
+    function readJcCard() {
+
+        var jcCardReader = document.getElementById("jcCardReader");
+        var sRet = jcCardReader.GetCardData();//例:8#330100D1560000050051ED889B3FAFE3#测试 #330100201201230015#FFFFFFFF
+        alert("sRet:"+sRet);
+    }
+
+</script>
+
+
+<OBJECT ID='jcCardReader' CODEBASE='ocx/jcCardReader.cab#version=1,0,1,0' CLASSID='CLSID:AB07B60F-5652-4215-B8CC-FE2822EB75A0' width=0 Height=0></OBJECT>

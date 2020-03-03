@@ -1,0 +1,30 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<input type="button" value="读非接" onclick="Jui_ReadCardCsn()" id="out_read"/>
+<input type="button" value="读接触" onclick="readJcCard()" id="jc_read"/>
+<hr/>
+读非接返回:<textarea  rows="5" cols="80" name="out_read_return" id="out_read_return" ></textarea>
+<br>
+读接触返回:<textarea rows="5" cols="80" name="jc_read_return" id="jc_read_return"></textarea>
+
+<script type="text/javascript">
+    function Jui_ReadCardCsn() {
+        //加载读写器驱动，连接读写器;为数字类型；
+        var readcsn = document.getElementById("wq_ocx_all");
+        // var csn = readcsn.Read_MFCSN(1, 115200);  //内卡号
+        var csn = readcsn.Read_MFCSNcardid(101,115200);
+        document.getElementById("out_read_return").innerHTML=csn;
+
+    }
+
+    function readJcCard() {
+
+        var jcCardReader = document.getElementById("jcCardReader");
+        var sRet = jcCardReader.GetCardData();//例:8#330100D1560000050051ED889B3FAFE3#测试 #330100201201230015#FFFFFFFF
+        document.getElementById("jc_read_return").innerHTML=sRet;
+    }
+</script>
+
+
+<OBJECT ID='wq_ocx_all' CODEBASE='ocx/all_1030.cab#version=2.0.0.1' CLASSID='CLSID:F1550F9F-AB6E-4178-A330-A158713F8C85' width=0 Height=0></OBJECT>
+<OBJECT ID='jcCardReader' CODEBASE='ocx/jcCardReader.cab#version=1,0,1,0' CLASSID='CLSID:AB07B60F-5652-4215-B8CC-FE2822EB75A0' width=0 Height=0></OBJECT>
