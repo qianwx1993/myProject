@@ -17,7 +17,7 @@ import java.io.Serializable;
  * @Date 2020/3/3 12:30
  */
 @Data
-public class Beauty implements Cloneable,Serializable {
+public class Beauty implements Serializable {
 
 	private String name;
 	private int level;
@@ -36,8 +36,8 @@ public class Beauty implements Cloneable,Serializable {
 		return name + ", " + level + ", " + face;
 	}
 
-	@Override
+	/*@Override
 	protected Object clone() throws CloneNotSupportedException {
 		return super.clone();
-	}
+	}*/
 }
