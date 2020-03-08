@@ -22,7 +22,7 @@ public class ThreadDoneTest {
         ExecutorService exe = Executors.newFixedThreadPool(50);
         for (int i = 1; i <= 5; i++) {
             ThreadDemo threadDemo = threadPoolDemo.new ThreadDemo();
-            exe.execute(threadPoolDemo.new ThreadDemo());
+            exe.execute(threadDemo);
         }
         exe.shutdown();
         while (true) {
@@ -38,7 +38,7 @@ public class ThreadDoneTest {
         public void run()
         {
             System.err.println("hello world");
+            System.err.println(Thread.currentThread().getName());
         }
-
     }
 }
