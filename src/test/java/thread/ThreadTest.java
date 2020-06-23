@@ -13,13 +13,13 @@ import java.util.concurrent.*;
 public class ThreadTest {
     //新建线程池，使用diyThreadFactory
     public static void main(String[] args) throws InterruptedException {
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 10, 60, TimeUnit.SECONDS,
+        /*ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 10, 60, TimeUnit.SECONDS,
                     new ArrayBlockingQueue<>(10), new DiyThreadFactory(),new ThreadPoolExecutor.CallerRunsPolicy());
 //        ExecutorService threadPoolExecutor = Executors.newCachedThreadPool();
         for (int i = 1; i <= 5; i++) {
             threadPoolExecutor.execute(new ThreadDemo());
         }
-        threadPoolExecutor.shutdown();
+        threadPoolExecutor.shutdown();*/
         /*while (true) {
             if (threadPoolExecutor.isTerminated()) {
                 System.out.println("结束了！");
