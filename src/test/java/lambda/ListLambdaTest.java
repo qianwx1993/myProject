@@ -210,6 +210,19 @@ public class ListLambdaTest {
 		System.err.println("test END");
 
 	}
+
+	/**
+	 * sort()
+	 * 与上面的sort不同
+	 *现在可以直接使用List.sort()方法，结合Lambda表达式
+	 */
+	@Test
+	public void test11(){
+		ArrayList<String> list = new ArrayList<>(Arrays.asList("I", "love", "you", "too"));
+		list.sort((str1,str2) -> str1.length()-str2.length());
+		list.forEach(str -> System.out.println(str));
+	}
+
 	private static class MyThredIteratorThread <T> extends Thread {
 
 		private final Spliterator<T> list;
@@ -223,5 +236,4 @@ public class ListLambdaTest {
 			list.forEachRemaining(e -> System.out.println(Thread.currentThread().getName()+":"+e));
 		}
 	}
-
-	}
+}

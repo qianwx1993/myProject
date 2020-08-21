@@ -2,8 +2,7 @@ package lambda;
 
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 
@@ -175,4 +174,30 @@ public class MapLambdaTest {
 		map.replaceAll((k,v)-> v.toUpperCase());
 		map.forEach((k,v)-> System.out.println(k + "=" + v));
 	}
+
+	/**
+	 * merge()作用是：
+	 *
+	 * 如果Map中key对应的映射不存在或者为null，则将value（不能是null）关联到key上；
+	 * 否则执行remappingFunction，如果执行结果非null则用该结果跟key关联，否则在Map中删除key的映射．
+	 */
+	@Test
+	public void test10(){
+		HashMap<Integer, String> map = new HashMap<>();
+		map.put(1, "one");
+		map.put(2, "two");
+		map.put(3, "three");
+
+		map.merge(1,"111",(v1,v2)->v1+v2);
+		map.forEach((k,v)-> System.out.println(k + "=" + v));
+	}
+
+	/**
+	 *
+	 */
+	@Test
+	public void test11(){
+
+	}
+
 }
