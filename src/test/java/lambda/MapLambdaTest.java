@@ -180,6 +180,7 @@ public class MapLambdaTest {
 	 *
 	 * 如果Map中key对应的映射不存在或者为null，则将value（不能是null）关联到key上；
 	 * 否则执行remappingFunction，如果执行结果非null则用该结果跟key关联，否则在Map中删除key的映射．
+	 * merge()方法虽然语义有些复杂，但该方法的用方式很明确，一个比较常见的场景是将新的错误信息拼接到原来的信息上
 	 */
 	@Test
 	public void test10(){
@@ -193,11 +194,70 @@ public class MapLambdaTest {
 	}
 
 	/**
-	 *
+	 *compute()
+	 * 该方法签名为compute(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)，
+	 * 作用是把remappingFunction的计算结果关联到key上，如果计算结果为null，则在Map中删除key的映射．
 	 */
 	@Test
 	public void test11(){
+		HashMap<Integer, String> map = new HashMap<>();
+		map.put(1, "one");
+		map.put(2, "two");
+		map.put(3, "three");
 
+		map.compute(1, (k,v) -> v==null ? "111" : v.concat("111"));
+		map.forEach((k,v)-> System.out.println(k + "=" + v));
+	}
+
+	/**
+	 * computeIfAbsent()
+	 * 该方法签名为V computeIfAbsent(K key, Function<? super K,? extends V> mappingFunction)，
+	 * 作用是：只有在当前Map中不存在key值的映射或映射值为null时，才调用mappingFunction，
+	 *      并在mappingFunction执行结果非null时，将结果跟key关联．
+	 * computeIfAbsent()常用来对Map的某个key值建立初始化映射．比如我们要实现一个多值映射，
+	 * Map的定义可能是Map<K,Set<V>>，要向Map中放入新值
+	 */
+	@Test
+	public void test12(){
+		Map<Integer, Set<String>> map = new HashMap<>();
+		// Java7及以前的实现方式
+		/*if(map.containsKey(1)){
+			map.get(1).add("one");
+		}else{
+			Set<String> valueSet = new HashSet<String>();
+			valueSet.add("one");
+			map.put(1, valueSet);
+		}
+		*/
+		// Java8的实现方式
+		map.computeIfAbsent(1, v -> new HashSet<String>()).add("yi");
+		map.forEach((k,v)-> System.out.println(k + "=" + v));
+	}
+
+	/**
+	 * computeIfPresent()
+	 *该方法签名为V computeIfPresent(K key, BiFunction<? super K,? super V,? extends V> remappingFunction)，
+	 * 作用跟computeIfAbsent()相反，即，只有在当前Map中存在key值的映射且非null时，
+	 * 才调用remappingFunction，如果remappingFunction执行结果为null，则删除key的映射，
+	 * 否则使用该结果替换key原来的映射．
+	 */
+	@Test
+	public void test13(){
+		Map<Integer, String> map = new HashMap<>();
+		map.put(1, "one");
+		// Java7及以前跟computeIfPresent()等效的代码
+		/*if (map.get(key) != null) {
+			V oldValue = map.get(key);
+			V newValue = remappingFunction.apply(key, oldValue);
+			if (newValue != null)
+				map.put(key, newValue);
+			else
+				map.remove(key);
+			return newValue;
+		}
+		return null;*/
+		map.computeIfPresent(1, (k, v) -> "yi");
+		map.forEach((k,v)-> System.out.println(k + "=" + v));
 	}
 
 }

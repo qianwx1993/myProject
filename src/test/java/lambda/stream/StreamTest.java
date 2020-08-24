@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * @author Qian
@@ -37,4 +38,25 @@ public class StreamTest {
 		list.stream().filter(student -> "G".equals(student.getSex()))
 				.forEach(student -> System.out.println(student.toString()));
 	}
+
+	/**
+	 * distinct()，作用是返回一个去除重复元素之后的Stream。
+	 */
+	@Test
+	public void test2(){
+		Stream<String> stream= Stream.of("I", "love", "you", "too", "too");
+		stream.distinct()
+				.forEach(str -> System.out.println(str));
+	}
+
+	@Test
+	public void test3(){
+		Stream<String> stream= Stream.of("I", "love", "you", "too");
+		stream.sorted((str1, str2) -> str1.length()-str2.length())
+				.forEach(str -> System.out.println(str));
+	}
+
+	/**
+	 * map
+	 */
 }
