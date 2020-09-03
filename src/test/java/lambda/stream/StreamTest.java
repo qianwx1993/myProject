@@ -5,6 +5,9 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -20,7 +23,7 @@ public class StreamTest {
 		Student stuB = new Student(2, "B", "G", 163);
 		Student stuC = new Student(3, "C", "M", 175);
 		Student stuD = new Student(4, "D", "G", 158);
-		Student stuE = new Student(5, "E", "M", 170);
+		Student stuE = new Student(5, "A", "M", 170);
 		List<Student> list = new ArrayList<>();
 		list.add(stuA);
 		list.add(stuB);
@@ -85,5 +88,40 @@ public class StreamTest {
 		Stream<List<Integer>> stream = Stream.of(Arrays.asList(1,2), Arrays.asList(3, 4, 5));
 		stream.flatMap(list -> list.stream())
 				.forEach(i -> System.out.println(i));
+	}
+
+	/**
+	 * stream使用collect()生成Map
+	 *  Collectors.groupingBy方法
+	 */
+	@Test
+	public void test6(){
+		List<Student> students = initList();
+		Map<String, List<Student>> map = students.stream().collect(Collectors.groupingBy(Student::getName));
+		//上述是使用方法引用(类名::实例方法名)，也可以使用lambda表达式(s->s.getName())
+		//Map<String, List<Student>> map = students.stream().collect(Collectors.groupingBy(s->s.getName());
+		map.forEach((k,v)-> {
+			System.out.println(k);
+			for (Student student : v) {
+				System.out.println(student.toString());
+			}
+
+		});
+	}
+
+	/**
+	 *
+	 */
+	@Test
+	public void test7(){
+		List<Student> students = initList();
+		//Map<String, List<Student>> map = students.stream().collect(Collectors.toMap(Function.identity(),student->));
+		//map.forEach((k,v)-> {
+		//	System.out.println(k);
+		//	for (Student student : v) {
+		//		System.out.println(student.toString());
+		//	}
+		//
+		//});
 	}
 }

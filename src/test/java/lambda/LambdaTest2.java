@@ -2,6 +2,9 @@ package lambda;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * lambda表达式中的this
  * @author Qian
@@ -34,6 +37,24 @@ public class LambdaTest2 {
 		new Thread(() -> {
 			System.out.println("这里的this指向当前的ThisDemo类:" + this.name);
 		}).start();
+	}
+
+	/**
+	 * Lambda表达式及匿名内部类 的作用域
+	 * 注：lambda：不能更改非最终变量
+	 * 如下：
+	 *  s为局部变量，“s+=str;”代码更改了s的值，编译会不通过
+	 */
+	@Test
+	public void test2() {
+		String s="&";
+		String[] arr={"1","2","3"};
+		List<String> list=Arrays.asList(arr);
+		list.forEach(str-> {
+			//s+=str;//打开会报错
+			System.out.println(s);
+		});
+		System.out.println(s);
 	}
 
 	public static void main(String[] args) {
