@@ -5,7 +5,9 @@ import com.qwx.myProject.pojo.Student;
 import com.qwx.myProject.service.impl.RedisService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -20,13 +22,17 @@ import javax.annotation.Resource;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MyProjectApplication.class)
 public class SpringbootRedisApplicationTests {
+    @Autowired
+    RedisTemplate redisTemplate;
     @Resource
     private RedisService service;
 
     @Test
     public void setKey(){
-        service.set("test100","100");
-        System.out.println("###"+service.get("test100"));
+//        service.set("test100","100");
+////        System.out.println("###"+service.get("test100"));
+        redisTemplate.opsForValue().set("test100","100");
+        System.out.println("############"+redisTemplate.opsForValue().get("test100"));
     }
 
     @Test

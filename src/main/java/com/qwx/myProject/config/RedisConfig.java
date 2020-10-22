@@ -25,8 +25,8 @@ import java.util.Set;
  * @Date 2020/4/3 0:29
  */
 @Slf4j
-@Configuration
-@EnableAutoConfiguration
+//@Configuration
+//@EnableAutoConfiguration
 public class RedisConfig {
     private static Logger logger = LoggerFactory.getLogger(RedisConfig.class);
 
