@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans>
+	<bean id="usertest" class="com.qwx.myProject.pojo.User">
+		<property name="username" value="lxlx" />
+		<property name="passWord" value="111" />
+		<property name="age" value="11"/>
+	</bean>
+</beans>
