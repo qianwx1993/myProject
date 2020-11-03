@@ -1,5 +1,10 @@
 package com.qwx.myProject.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 /**
  * @author Qian
  * @Version 1.0
@@ -7,32 +12,12 @@ package com.qwx.myProject.pojo;
  * @Company Bangsun
  * @Date 2020/11/3 15:40
  */
+@Data
+@NoArgsConstructor                 //无参构造
+@AllArgsConstructor                //有参构造
+@ToString
 public class User {
 	private String username;
 	private String passWord;
 	private int age;
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public String getPassWord() {
-		return passWord;
-	}
-
-	public int getAge() {
-		return age;
-	}
 }

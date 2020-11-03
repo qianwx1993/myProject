@@ -11,7 +11,7 @@ import com.qwx.myProject.util.factory.ConcreteBeanFactory;
  * @Company Bangsun
  * @Date 2020/11/3 15:52
  */
-public class Client {
+public class SimpleFactoryClient {
 	public static void main(String[] args){
 		ConcreteBeanFactory absbf = new ConcreteBeanFactory();
 		absbf.init("D:\\WorkSpace\\IdeaProjects\\myProject\\src\\main\\resources\\springtest.xml");
