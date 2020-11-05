@@ -34,5 +34,12 @@ public class FactoryMethodTester {
 		User user1 =(User) ctx.getBean("user1");
 		System.out.println(user1);
 	}
+	@Test
+	public void factoryBeanTest(){
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("user-factory-bean.xml");
+		System.out.println("容器启动完成");
+		Object bean = ctx.getBean("userFactoryBean");
+		System.out.println("打印属性:" + bean);
+	}
 }
 
