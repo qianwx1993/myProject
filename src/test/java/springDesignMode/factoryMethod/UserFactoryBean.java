@@ -13,7 +13,7 @@ import org.springframework.beans.factory.FactoryBean;
 public class UserFactoryBean implements FactoryBean<User> {
     @Override
     public User getObject() throws Exception {
-        return new User("cxq","123456",1);
+        return new User(1,"cxq","123456",1);
     }
 
     @Override
