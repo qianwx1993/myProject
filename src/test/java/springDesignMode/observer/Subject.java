@@ -1,7 +1,7 @@
 package springDesignMode.observer;
 
 /**
- * 实现观察者与监听者关联
+ * 主题——实现观察者与监听者关联
  * @author Qian
  * @Version 1.0
  * @Since JDK1.6

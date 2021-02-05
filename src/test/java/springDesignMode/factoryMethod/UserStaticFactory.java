@@ -16,9 +16,9 @@ import java.util.Map;
 public class UserStaticFactory {
     private static Map<String, User> map = new HashMap<String,User>();
     static{
-        map.put("qwx", new User("qwx","123456",10));
-        map.put("cxq", new User("cxq","123456",9));
-        map.put("xf", new User("xf","123456",10));
+        map.put("qwx", new User(1,"qwx","123456",10));
+        map.put("cxq", new User(2,"cxq","123456",9));
+        map.put("xf", new User(3,"xf","123456",10));
     }
     public static User getUser(String name){
         return map.get(name);

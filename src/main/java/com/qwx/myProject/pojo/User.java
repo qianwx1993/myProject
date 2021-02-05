@@ -17,6 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor                //有参构造
 @ToString
 public class User {
+	private Integer id;
 	private String username;
 	private String passWord;
 	private int age;
