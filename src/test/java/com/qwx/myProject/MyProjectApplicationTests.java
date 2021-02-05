@@ -11,6 +11,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MyProjectApplication.class)
 public class MyProjectApplicationTests {
@@ -23,7 +25,7 @@ public class MyProjectApplicationTests {
 	@Qualifier("secondaryJdbcTemplate")
 	private JdbcTemplate jdbcTemplate2;
 
-	@Autowired
+	@Resource
 	private CityMapper cityMapper;
 
 	@Autowired
