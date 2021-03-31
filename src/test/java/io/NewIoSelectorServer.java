@@ -25,6 +25,7 @@ public class NewIoSelectorServer {
 		//NIO,很重要的三个东西：【Channel、Buffer、Selector】
 		//管道、缓冲区、多路复用器
 		try {
+			selector=Selector.open();
 			ServerSocketChannel serverSocketChannel= ServerSocketChannel.open();
 			//!!!表示设置为非阻塞；不设置会是阻塞
 			serverSocketChannel.configureBlocking(false);
@@ -43,8 +44,9 @@ public class NewIoSelectorServer {
 
 					if (key.isAcceptable()){//响应事件
 						//TODO
+						handleAccept(key);
 					}else if(key.isReadable()){//读的就绪事件
-
+						handleRead(key);
 					}
 				}
 
@@ -68,8 +70,6 @@ public class NewIoSelectorServer {
 					System.out.println("连接未就绪");
 				}
 			}
-
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
@@ -79,10 +79,29 @@ public class NewIoSelectorServer {
 	}
 
 	private static void handleAccept(SelectionKey selectionKey){
-
+		ServerSocketChannel serverSocketChannel = (ServerSocketChannel) selectionKey.channel();
+		try {
+			//一定会有一个连接
+			SocketChannel socketChannel = serverSocketChannel.accept();
+			socketChannel.configureBlocking(false);
+			socketChannel.write(ByteBuffer.wrap("hello,wo shi server".getBytes()));
+			//注册事件
+			socketChannel.register(selector,SelectionKey.OP_READ);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	private static void handleRead(SelectionKey selectionKey){
+		SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
+		ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+		try {
+			//代码走到这里一定有值
+			socketChannel.read(byteBuffer);
+			System.out.println("Server Receive msg:"+new String(byteBuffer.array()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 }
