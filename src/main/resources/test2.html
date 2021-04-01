@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="demo">Jui_ReadCardCsn()</p>
+
+<p id="demo2">Jui_ReadCardCsn()</p>
+
+
+<script>
+    function Jui_ReadCardCsn() {
+        //加载读写器驱动，连接读写器;为数字类型；
+        var readcsn = document.getElementById("wq_ocx_all");
+        var csn = readcsn.Read_MFCSN(1, 115200);  //内卡号
+        alert("--csn:"+csn);
+    }
+
+</script>
+</body>
+
+
+<OBJECT ID='jcCardReader' CODEBASE='../ocx/jcCardReader.cab#version=1,0,1,0' CLASSID='CLSID:AB07B60F-5652-4215-B8CC-FE2822EB75A0' width=0 Height=0></OBJECT>
+<OBJECT ID='wq_ocx_all' CODEBASE='../ocx/all_1030.cab#version=2.0.0.1' CLASSID='CLSID:F1550F9F-AB6E-4178-A330-A158713F8C85' width=0 Height=0></OBJECT>
+</html>
