@@ -20,6 +20,6 @@ public class RestTemplateTester {
     RestTemplate restTemplate;
     @Test
     public void testRest(){
-        restTemplate.getForEntity("www.baidu.com",String.class);
+        restTemplate.getForObject("http://www.baidu.com",String.class);
     }
 }
