@@ -80,6 +80,7 @@ public class NewIoSelectorServer {
 
 	private static void handleAccept(SelectionKey selectionKey){
 		ServerSocketChannel serverSocketChannel = (ServerSocketChannel) selectionKey.channel();
+		System.out.println("serverSocketChannel:"+serverSocketChannel);
 		try {
 			//一定会有一个连接
 			SocketChannel socketChannel = serverSocketChannel.accept();
@@ -94,6 +95,7 @@ public class NewIoSelectorServer {
 
 	private static void handleRead(SelectionKey selectionKey){
 		SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
+		System.out.println("serverSocketChannel:"+socketChannel);
 		ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
 		try {
 			//代码走到这里一定有值
