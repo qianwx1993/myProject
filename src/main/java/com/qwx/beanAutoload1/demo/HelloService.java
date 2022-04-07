@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
  * @Since JDK1.8
  * @Date 2021/11/23 23:46
  */
-@Component
+//@Component
 public class HelloService {
 }
