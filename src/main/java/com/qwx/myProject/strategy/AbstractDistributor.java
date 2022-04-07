@@ -76,7 +76,7 @@ public abstract class AbstractDistributor {
 	 */
 	DistributeBo currentOrgCustManager4Wealth(InputTaskRecord record, InputTaskRecordDetail detail){
 		log.info("进入了{}方法","currentOrgCustManager4Wealth");
-		return null;
+		return new DistributeBo("qian","1002");
 	}
 
 	/**
